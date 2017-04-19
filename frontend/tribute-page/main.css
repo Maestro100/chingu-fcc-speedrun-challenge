@@ -1,38 +1,50 @@
+
 /* +++++
 PAGE STYLES
 +++++ */
 
 body {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 
-img {
-  display: block;
-  margin: 0 auto;
-  padding: 10px;
+p, li, h1, h2, h3, cite {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* +++++
 FONT STYLING
 +++++ */
 
-p {
+p, li {
   font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 55px;
+  text-align: center;
+  font-weight: 600;
 }
 
 h2 {
   text-align: center;
-  font-size: 35px;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
+  padding-top: 28px;
+  font-weight: 600;
+}
+
+i {
+  font-style: italic;
+  font-weight: 700;
 }
 
 /* +++++
@@ -41,7 +53,18 @@ BLOCK QUOTES & FIGURES
 
 figure {
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  padding: 0 0 10px 10px;
+  max-width: 100%;
+}
+
+.illustration {
+  float: right;
 }
 
 blockquote {
@@ -51,14 +74,16 @@ blockquote {
 }
 
 blockquote p {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  font-size: 22px;
+  font-style: italic;
 }
 
 cite, figcaption {
-  float: right;
   position: absolute;
   right: 0;
   bottom: 0;
+  font-style: normal;
 }
 
 /* +++++
@@ -69,17 +94,8 @@ header {
   border-bottom: 2px solid black;
 }
 
-nav li {
-  list-style: none;
-  display: inline-block;
-  float: right;
-  padding-left: 20px;
-}
-
-nav li a {
-  text-decoration: none;
-  color: black;
-  text-transform: uppercase;
+.heading {
+  padding: 20px 10% 0 10%;
 }
 
 /* +++++
@@ -88,9 +104,12 @@ PAGE SECTIONS
 
 section {
   margin: 35px auto;
-  padding: 15px;
+  padding-bottom: 15px;
+  max-width: 1000px;
 }
 
-.illustration {
-  float: right;
+.footnote {
+  text-align: center;
+  font-style: italic;
+  font-weight: 400;
 }
