@@ -56,15 +56,19 @@ figure {
   padding-bottom: 20px;
 }
 
+figcaption {
+  text-align: right;
+}
+
 img {
   display: block;
   margin: 0 auto;
-  padding: 0 0 10px 10px;
   max-width: 100%;
 }
 
 .illustration {
   float: right;
+  padding: 0 0 10px 10px;
 }
 
 blockquote {
@@ -79,7 +83,7 @@ blockquote p {
   font-style: italic;
 }
 
-cite, figcaption {
+cite {
   position: absolute;
   right: 0;
   bottom: 0;
