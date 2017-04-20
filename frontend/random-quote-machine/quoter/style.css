@@ -1,3 +1,14 @@
+/* "reset" for block-level elements */
+#quoter-container,
+#quoter-quote,
+#quoter-controls,
+#quoter-controls .btn {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
 #quoter-container {
   height: 260px;
   width: 500px;
@@ -6,29 +17,29 @@
   background-color: #eee;
   position: relative; /* to fix position of buttons */
   margin: 0 auto;
-  padding: 0; /* to "reset" any other styles */
-  box-sizing: content-box;
 }
 
-#quoter-container #quoter-quote {
-  padding: 0;
-  box-sizing: content-box;
-  border: 0;
+#quoter-quote {
   margin: 35px;
 }
 
-#quoter-container #quoter-controls {
+#quoter-controls {
   position: absolute;
   width: 100px;
   bottom: 0;
   left: 200px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: content-box;
 }
 
+#quoter-controls .btn {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
 
+/* reset for inline elements */
 #quoter-container p,
 #quoter-container cite {
   margin: 0;
@@ -40,16 +51,6 @@
   font-style: normal;
 }
 
-
-#quoter-container .btn {
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-  padding: 5px;
-  margin: 5px;
-  cursor: pointer;
-  box-sizing: content-box;
-}
 
 #quoter-container p {
   font-size: 22px;
