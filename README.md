@@ -25,7 +25,7 @@ Integrate all of the FCC Projects you created in Phase 1 into one comprehensive 
 
 Current challenge - [Countdown Clock](https://countingdownto.com/countdown/chingu-fcc-speedrun-challenge-april-may-2017-countdown-clock)    
 
-Original challenge - Completed in March 2017 - [Countdown Clock](https://countingdownto.com/countdown/chingu-fcc-speedrun-challenge-countdown-clock) 
+Original challenge - Completed in March 2017 - [Countdown Clock](https://countingdownto.com/countdown/chingu-fcc-speedrun-challenge-countdown-clock)
 
 
 ### The Rules
@@ -38,7 +38,7 @@ Original challenge - Completed in March 2017 - [Countdown Clock](https://countin
 * All code for Phase 1 should be committed to your fork of this repo.
 * Phase 2 code should be in a separate repository each participant creates to contain their personal Portfolio SPA.
 * You may ask for help and help others - preference should always be given to helping someone understand, not handing them code they don't.
-* If someone is stuck, you may pair with them to help them get unstuck (on as many projects as you want) even if you're doing your own entry separately or with another pair. 
+* If someone is stuck, you may pair with them to help them get unstuck (on as many projects as you want) even if you're doing your own entry separately or with another pair.
 * If someone pairs with you to help you get unstuck, be sure to make a note to credit them in your repo and in your blog posts.
 
 ### Deliverables
@@ -64,7 +64,7 @@ Copy this table as needed to make a separate table for each team member for reco
 | Complete | Blog Post |Project  |
 |----------|---------|----------|
 |      | N/A| [Comprehensive Portfolio as a Single Page App](./portfolio) |   |
-|      |  [ ]()  | [Build a Tribute Page](./frontend/tribute-page) |  |
+| 4/19 |  [ ]()  | [Build a Tribute Page](./frontend/tribute-page) |  |
 |      |  [ ]()  | [Build a Personal Portfolio Webpage](./frontend/portfolio) |  |
 |      |  [ ]()  | [Build a Random Quote Machine](./frontend/random-quote-machine) |  |
 |      |  [ ]()  | [Show the Local Weather](./frontend/local-weather) |  |
@@ -94,5 +94,3 @@ Copy this table as needed to make a separate table for each team member for reco
 |      |  [ ]()  | [Chart the Stock Market](./backend/app-stock-market) |  |
 |      |  [ ]()  | [Manage a Book Trading Club](./backend/app-book-trading) |  |
 |      |  [ ]()  | [Build a Pinterest Clone](./backend/app-pinterest-clone) |  |
-
-
