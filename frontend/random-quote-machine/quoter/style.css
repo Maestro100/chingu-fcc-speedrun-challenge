@@ -1,0 +1,50 @@
+#quoter-container {
+  height: 260px;
+  width: 500px;
+  border: 6px solid #111;
+  border-radius: 7.5px;
+  background-color: #eee;
+  position: relative; /* to fix position of buttons */
+  margin: 0 auto; /* to center in parent div */
+  padding: 0; /* to "reset" any other styles */
+}
+
+#quoter-container #quoter-controls {
+  position: absolute;
+  width: 100px;
+  bottom: 0;
+  left: 200px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/*
+#quoter-container p,
+#quoter-container cite {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-style: normal;
+}
+*/
+
+#quoter-container .btn {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#quoter-container p {
+  font-size: 22px;
+}
+
+#quoter-container cite {
+  font-size: 16px;
+  float: right;
+  text-align: right;
+}
