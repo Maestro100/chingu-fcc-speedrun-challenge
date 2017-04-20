@@ -74,8 +74,8 @@ var quoter = (function() {
   var id = document.getElementById("quoter-container");
   id.innerHTML = "<blockquote id='quoter-quote'></blockquote>" +
                  "<div id='quoter-controls'>" +
-                   "<img class='btn' onclick='quoter.new()' src='quoter/128px-Refresh_icon.png'>" +
-                   "<img class='btn' onclick='quoter.tweet()' src='quoter/Twitter_Logo_White_On_Blue.svg'>" +
+                   "<img class='btn' onclick='quoter.new()' src='quoter/128px-Refresh_icon.png'><!--" +
+                   "--><img class='btn' onclick='quoter.tweet()' src='quoter/Twitter_Logo_White_On_Blue.svg'>" +
                  "</div>";
   target = document.getElementById("quoter-quote");
   newQuote();

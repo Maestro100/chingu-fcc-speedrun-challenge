@@ -5,8 +5,16 @@
   border-radius: 7.5px;
   background-color: #eee;
   position: relative; /* to fix position of buttons */
-  margin: 0 auto; /* to center in parent div */
+  margin: 0 auto;
   padding: 0; /* to "reset" any other styles */
+  box-sizing: content-box;
+}
+
+#quoter-container #quoter-quote {
+  padding: 0;
+  box-sizing: content-box;
+  border: 0;
+  margin: 35px;
 }
 
 #quoter-container #quoter-controls {
@@ -17,9 +25,10 @@
   margin: 0;
   padding: 0;
   border: 0;
+  box-sizing: content-box;
 }
 
-/*
+
 #quoter-container p,
 #quoter-container cite {
   margin: 0;
@@ -30,13 +39,16 @@
   vertical-align: baseline;
   font-style: normal;
 }
-*/
+
 
 #quoter-container .btn {
+  display: inline-block;
   height: 30px;
   width: 30px;
   padding: 5px;
+  margin: 5px;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 #quoter-container p {
@@ -44,6 +56,7 @@
 }
 
 #quoter-container cite {
+  padding-top: 5px;
   font-size: 16px;
   float: right;
   text-align: right;
