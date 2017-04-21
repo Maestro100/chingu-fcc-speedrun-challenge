@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i');
+
 /* "reset" for block-level elements */
 #quoter-container,
 #quoter-quote,
@@ -20,7 +22,7 @@
 }
 
 #quoter-quote {
-  margin: 35px;
+  margin: 25px;
 }
 
 #quoter-controls {
@@ -35,7 +37,7 @@
   height: 30px;
   width: 30px;
   padding: 5px;
-  margin: 5px;
+  margin: 0 5px;
   cursor: pointer;
 }
 
@@ -49,16 +51,26 @@
   font: inherit;
   vertical-align: baseline;
   font-style: normal;
+  color: black;
+  line-height: normal;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
 }
 
 
 #quoter-container p {
-  font-size: 22px;
+  font-size: 20px;
+  text-align: left;
 }
 
 #quoter-container cite {
   padding-top: 5px;
-  font-size: 16px;
+  font-size: 15px;
   float: right;
   text-align: right;
+  font-style: italic;
+}
+
+#quoter-container i {
+  font-style: italic;
 }
