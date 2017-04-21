@@ -1,19 +1,18 @@
 
 // create an express app
 var express = require('express');
+var path = require('path');
+
 var app = express();
 
 // handle GET requests to '/'
 app.get('/', function(req, res) {
 
   // try to send the index.html file
-  res.sendFile(__dirname + '/index.html', function(err) {
+  res.sendFile(path.join(__dirname, "index.html"), function(err) {
     if (err) {
       console.log(err);
       res.send("Sorry, something's broken.");
-    }
-    else {
-      console.log('sent');
     }
   });
 });
@@ -21,25 +20,25 @@ app.get('/', function(req, res) {
 // handle GET request for timestamp
 app.get('/:date', function(req, res) {
 
-  // grab parameter passed by user
+  // create "default" response
+  var response = {"unix": null, "natural": null};
+
+  // get and format data from request
   var datestr = decodeURIComponent(req.params.date);
   datestr = datestr * 1000 || datestr;
 
-  // create a date object
+  // get date and update response
   var date = new Date(datestr);
-
-  // check that date is valid and send back response
-  if (!date.getTime()) {
-    res.send({"unix": null, "natural": null});
-  }
-  else {
-    res.send({
-      "unix": Math.floor(date.getTime() / 1000),
-      "natural": formatDate(date)
-    });
+  if (date.getTime()) {
+    response.unix = Math.floor(date.getTime() / 1000);
+    response.natural = formatDate(date);
   }
 
-  // function to format date
+  // send back response
+  console.log(JSON.stringify(response));
+  res.send(JSON.stringify(response));
+
+  // helper function to format date
   function formatDate(date) {
     var months = ["January", "February", "March", "April", "May", "June", "July",
                   "August", "September", "October", "November", "December"];
