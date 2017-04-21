@@ -8,17 +8,43 @@ app.get('/', function(req, res) {
 
   // try to send the index.html file
   res.sendFile(__dirname + '/index.html', function(err) {
-
-    // if that doesn't work, say sorry!
     if (err) {
       console.log(err);
       res.send("Sorry, something's broken.");
     }
-    // if it does? Hooray!
     else {
       console.log('sent');
     }
   });
+});
+
+// handle GET request for timestamp
+app.get('/:date', function(req, res) {
+
+  // grab parameter passed by user
+  var datestr = decodeURIComponent(req.params.date);
+  datestr = datestr * 1000 || datestr;
+
+  // create a date object
+  var date = new Date(datestr);
+
+  // check that date is valid and send back response
+  if (!date.getTime()) {
+    res.send({"unix": null, "natural": null});
+  }
+  else {
+    res.send({
+      "unix": Math.floor(date.getTime() / 1000),
+      "natural": formatDate(date)
+    });
+  }
+
+  // function to format date
+  function formatDate(date) {
+    var months = ["January", "February", "March", "April", "May", "June", "July",
+                  "August", "September", "October", "November", "December"];
+    return months[date.getUTCMonth()] + " " + date.getUTCDate() + ", " + date.getUTCFullYear();
+  }
 });
 
 // start listening (right now on port 3000)
