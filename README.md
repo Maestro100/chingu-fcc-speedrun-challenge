@@ -84,7 +84,7 @@ Copy this table as needed to make a separate table for each team member for reco
 |      |  [ ]()  | [Visualize Data with a Heat Map](./data-vis/heat-map) |  |
 |      |  [ ]()  | [Show National Contiguity with a Force Directed Graph](./data-vis/force-directed-graph) |  |
 |      |  [ ]()  | [Map Data Across the Globe](./data-vis/data-across-globe) |  |
-|      |  [ ]()  | [Timestamp Microservice](./backend/api-timestamp) |  |
+| 4/21 |  [Link](https://medium.com/@agathalynn/timestamp-microservice-fcc-speedrun-project-3-69c35596a9be)  | [Timestamp Microservice](./backend/api-timestamp) |  |
 |      |  [ ]()  | [Request Header Parser Microservice](./backend/api-request-header) |  |
 |      |  [ ]()  | [URL Shortener Microservice](./backend/api-url-shortener) |  |
 |      |  [ ]()  | [Image Search Abstraction Layer](./backend/api-image-search) |  |
