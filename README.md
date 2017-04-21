@@ -66,7 +66,7 @@ Copy this table as needed to make a separate table for each team member for reco
 |      | N/A| [Comprehensive Portfolio as a Single Page App](./portfolio) |   |
 | 4/19 |  [Link](https://medium.com/@agathalynn/tribute-page-fcc-speedrun-project-1-e4f4b7cb89a8)  | [Build a Tribute Page](./frontend/tribute-page) |  |
 |      |  [ ]()  | [Build a Personal Portfolio Webpage](./frontend/portfolio) |  |
-|      |  [ ]()  | [Build a Random Quote Machine](./frontend/random-quote-machine) |  |
+| 4/21 |  [Link](https://medium.com/@agathalynn/quote-machine-fcc-speedrun-project-2-483ab4b13d0f)  | [Build a Random Quote Machine](./frontend/random-quote-machine) |  |
 |      |  [ ]()  | [Show the Local Weather](./frontend/local-weather) |  |
 |      |  [ ]()  | [Build a Wikipedia Viewer](./frontend/wikipedia-viewer) |  |
 |      |  [ ]()  | [Use the Twitch.tv JSON API](./frontend/twitch-client) |  |
