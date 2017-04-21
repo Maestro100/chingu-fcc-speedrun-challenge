@@ -1,0 +1,14 @@
+{
+  "name": "api-timestamp",
+  "version": "1.0.0",
+  "description": "api timestamp microservice project for chingu fcc speedrun challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "{ \"name\": \"Abigail (agathalynn)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
