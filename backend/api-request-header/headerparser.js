@@ -1,3 +1,4 @@
+
 // function to parse header info
 function parseHeader(req) {
   var output = {};
