@@ -1,0 +1,14 @@
+{
+  "name": "api-request-header",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp request header parser api project, completed as part of chingu fcc speedrun challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abigail (agathalynn)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
