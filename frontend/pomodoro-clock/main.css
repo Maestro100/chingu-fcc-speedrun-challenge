@@ -1,0 +1,112 @@
+* {
+  color: #ddd;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 20px;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #3e795f;
+}
+
+#timer {
+  height: 100px;
+  width: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-175px, -50px);
+  text-align: center;
+  font-size: 78px;
+  letter-spacing: -3px;
+}
+
+@media (max-width: 400px) {
+  #timer {
+    width: 250px;
+    transform: translate(-125px, -50px);
+    font-size: 60px;
+  }
+}
+
+#control {
+  position: absolute;
+  height: 100px;
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  font-size: 45px;
+  transform: translate(-100px, 50px);
+  text-align: center;
+  border-top: 1px solid white;
+  padding-top: 10px;
+}
+
+#title {
+  font-size: 45px;
+  padding: 10px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#settings {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 45px;
+}
+
+.fa {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#settings-panel {
+  position: absolute;
+  width: 300px;
+  top: 35px;
+  right: 35px;
+  font-size: 30px;
+}
+
+.closed {
+  visibility: hidden;
+}
+
+.open {
+  visibility: visible;
+}
+
+.curr {
+  width: 20px;
+  position: relative;
+}
+
+.settings > div {
+  display: inline-block;
+  text-align: left;
+}
+
+#Breaktime-name,
+#Pomodoro-name {
+  cursor: pointer;
+}
+
+.time {
+  position: absolute;
+  right: 10px;
+}
+
+.time i,
+.time div {
+  display: inline-block;
+  width: 35px;
+  text-align: center;
+}

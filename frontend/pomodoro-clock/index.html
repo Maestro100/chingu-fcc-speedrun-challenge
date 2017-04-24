@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pomodoro Clock</title>
+
+    <script src="https://use.fontawesome.com/04363a9eb6.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+
+  <body>
+    <div id="title">Pomodoro</div>
+    <div id="settings">
+      <i id="settings-icon" class="fa fa-cog" aria-hidden="true"></i>
+      <div id="settings-panel" class="closed">
+        <ul>
+          <li class="settings">
+            <div id="Pomodoro-curr" class="curr"> </div><!--
+            --><div id="Pomodoro-name">Pomodoro</div><!--
+            --><div class="time">
+              <i id="Pomodoro-incr" class="fa fa-caret-up" aria-hidden="true"></i><!--
+              --><div id="Pomodoro-len"></div><!--
+              --><i id="Pomodoro-decr" class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+          </li>
+          <li class="settings">
+            <div id="Breaktime-curr" class="curr"> </div><!--
+            --><div id="Breaktime-name">Breaktime</div><!--
+            --><div class="time">
+              <i id="Breaktime-incr" class="fa fa-caret-up" aria-hidden="true"></i><!--
+            --><div id="Breaktime-len"></div><!--
+            --><i id="Breaktime-decr" class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="timer"></div>
+    <div id="control"><i id="control-btn" aria-hidden=\"true\"></i></div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
