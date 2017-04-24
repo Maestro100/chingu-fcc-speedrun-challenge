@@ -3,20 +3,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pomodoro Clock</title>
 
+    <script src="https://use.fontawesome.com/04363a9eb6.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
   </head>
 
   <body>
     <div id="title">Pomodoro</div>
     <div id="settings">
-      <div>SETTINGS</div>
-      <div id="settings-panel">
+      <i id="settings-icon" class="fa fa-cog" aria-hidden="true"></i>
+      <div id="settings-panel" class="closed">
+        <ul>
+          <li id="Pomodoro-settings"></li>
+          <li id="Breaktime-settings"></li>
+        </ul>
       </div>
     </div>
     <div id="timer"></div>
-    <div id="control">START</div>
+    <div id="control"></div>
 
     <script type="text/javascript" src="script.js"></script>
   </body>
