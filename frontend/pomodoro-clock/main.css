@@ -71,18 +71,18 @@ body {
 }
 
 .closed {
-  display: none;
+  visibility: hidden;
 }
 
 .open {
-  display: block;
+  visibility: visible;
 }
 
 .curr {
   width: 20px;
 }
 
-.set {
+.settings > div {
   display: inline-block;
   text-align: left;
 }
@@ -92,12 +92,12 @@ body {
   cursor: pointer;
 }
 
-#Breaktime-time,
-#Pomodoro-time {
+.time {
   margin-left: 30px;
 }
 
-.time {
+.time i,
+.time div {
   display: inline-block;
   width: 35px;
   text-align: center;

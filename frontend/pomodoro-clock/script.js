@@ -23,10 +23,7 @@ function Timer(name, minutes) {
       else {
         // update time remaining
         var currTime = new Date();
-        remaining = time - Math.floor((currTime - startTime) / 1000);
-        if (remaining < 0) {
-          remaining = 0;
-        }
+        remaining = Math.max(time - Math.floor((currTime - startTime) / 1000), 0);
         cb(getTime(), false);
       }
     }, 20);
@@ -58,14 +55,17 @@ function Timer(name, minutes) {
     return formatted.join(":");
   }
 
+  // check if timer is running
   function isRunning() {
     return running;
   }
 
+  // get name of timer
   function getName() {
     return name;
   }
 
+  // get original length/duration
   function len() {
     return time / 60;
   }
@@ -82,27 +82,28 @@ function Timer(name, minutes) {
   };
 }
 
-function Pomodoro() {
+(function Pomodoro() {
   var pomodoro = Timer("Pomodoro", 25);
   var breaktime = Timer("Breaktime", 5);
   var current = pomodoro;
 
-  var play_icon = "<i class=\"fa fa-play\" aria-hidden=\"true\"></i>";
-  var pause_icon = "<i class=\"fa fa-pause\" aria-hidden=\"true\"></i>";
-
   var bzzz = new Audio('bzzz.mp3');
+
+  function updateDisplay() {
+    document.getElementById("title").innerHTML = current.getName();
+    document.getElementById("timer").innerHTML = current.getTime();
+    document.getElementById("control-btn").className = current.isRunning() ? "fa fa-pause" : "fa fa-play";
+    formatSettings();
+  }
 
   function startTimer() {
     current.start(handleTimer);
-    document.getElementById("title").innerHTML = current.getName();
-    document.getElementById("timer").innerHTML = current.getTime();
-    document.getElementById("control").innerHTML = pause_icon;
-    formatSettings();
+    updateDisplay();
   }
 
   function pauseTimer() {
     current.pause();
-    document.getElementById("control").innerHTML = play_icon;
+    updateDisplay();
   }
 
   function handleTimer(time, done) {
@@ -126,36 +127,38 @@ function Pomodoro() {
     }
   }
 
+  function updateTimer(name, str) {
+    var val = (str == "-incr") ? 1 : -1;
+    if (name == pomodoro.getName()) {
+      pomodoro = Timer("Pomodoro", Math.max(pomodoro.len() + val, 1));
+      current = pomodoro;
+    }
+    else if (name == breaktime.getName()) {
+      breaktime = Timer("Breaktime", Math.max(breaktime.len() + val, 1));
+      current = breaktime;
+    }
+  }
+
   function formatSettings() {
     var timers = [pomodoro, breaktime];
     for (var i = 0; i < timers.length; i++) {
-      var el = document.getElementById(timers[i].getName() + "-settings");
-      var content = "";
+      var curr = document.getElementById(timers[i].getName() + "-curr");
       if (current == timers[i]) {
-        content += "<div class=\"curr set\"><i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i></div>";
+        curr.innerHTML = '<i class="fa fa-caret-right" aria-hidden="true"></i>';
       }
       else {
-      content += "<div class=\"curr set\"></div>";
+        curr.innerHTML = "";
       }
-      content += "<div class=\"set\" id=\"" + timers[i].getName() + "-name\">" + timers[i].getName() + "</div>";
-      content += "<div class=\"set\" id=\"" + timers[i].getName() + "-time\">" +
-      '<i id="' + timers[i].getName() + '-incr" class="fa fa-caret-up time" aria-hidden="true"></i>' +
-      '<div class="time">' + timers[i].len() + '</div>' +
-      '<i id="' + timers[i].getName() + '-decr" class="fa fa-caret-down time" aria-hidden="true"></i>' +
-      "</div>";
-      el.innerHTML = content;
+      document.getElementById(timers[i].getName() + "-len").innerHTML = timers[i].len();
     }
   }
 
   function setup() {
     // print initial values to screen
-    document.getElementById("title").innerHTML = current.getName();
-    document.getElementById("timer").innerHTML = current.getTime();
-    document.getElementById("control").innerHTML = play_icon;
-    formatSettings();
+    updateDisplay();
 
     // add event listener for start/pause button
-    document.getElementById("control").addEventListener("click", function() {
+    document.getElementById("control-btn").addEventListener("click", function() {
       if (!current.isRunning()) {
         startTimer();
       }
@@ -170,81 +173,37 @@ function Pomodoro() {
       panel.className = (panel.className == "open") ? "closed" : "open";
     });
 
-    // add event listeners to manually change current timer, reset
+    // add event listeners to change settings
     document.getElementById("settings").addEventListener("click", function(e) {
-      console.log(e.target.id);
-      if (e.target && e.target.id.slice(-5) == "-name") {
-        pauseTimer();
-        current.reset();
-
-        // give current timer time to clear
-        setTimeout(function() {
-          var name = e.target.id.slice(0, -5);
-          if (current.getName() !== name) {
-            current = (current == pomodoro) ? breaktime : pomodoro;
-          }
-          document.getElementById("title").innerHTML = current.getName();
-          document.getElementById("timer").innerHTML = current.getTime();
-          document.getElementById("control").innerHTML = play_icon;
-          formatSettings();
-        }, 100);
-      }
-
-      else if (e.target && e.target.id.slice(-5) == "-incr") {
+      if (e.target && e.target.id) {
         var name = e.target.id.slice(0, -5);
-        pauseTimer();
-        current.reset();
-        setTimeout(function() {
-        if (name == pomodoro.getName()) {
-          pomodoro = Timer("Pomodoro", pomodoro.len() + 1);
-          current = pomodoro;
-        }
-        else if (name == breaktime.getName()) {
-          breaktime = Timer("Breaktime", breaktime.len() + 1);
-          current = breaktime;
-        }
-        console.log(current, current.len());
+        var suffix = e.target.id.slice(-5);
 
-          // print initial values to screen
-          document.getElementById("title").innerHTML = current.getName();
-          document.getElementById("timer").innerHTML = current.getTime();
-          document.getElementById("control").innerHTML = play_icon;
-          formatSettings();
-        }, 100);
-      }
+        // switch between pomodoro and breaktime timers
+        if (suffix == "-name") {
+          pauseTimer();
+          current.reset();
 
-      else if (e.target && e.target.id.slice(-5) == "-decr") {
-        var name = e.target.id.slice(0, -5);
-        pauseTimer();
-        current.reset();
-        setTimeout(function() {
-        if (name == pomodoro.getName()) {
-          if (pomodoro.len() > 1) {
-            pomodoro = Timer("Pomodoro", pomodoro.len() - 1);
-          }
-          current = pomodoro;
+          // give current timer time to clear
+          setTimeout(function() {
+            if (current.getName() !== name) {
+              current = (current == pomodoro) ? breaktime : pomodoro;
+            }
+            updateDisplay();
+          }, 100);
         }
-        else if (name == breaktime.getName()) {
-          if (breaktime.len() > 1) {
-            breaktime = Timer("Breaktime", breaktime.len() - 1);
-          }
-          current = breaktime;
-        }
+        else if (suffix == "-incr" || suffix == "-decr") {
+          pauseTimer();
+          current.reset();
 
-          // print initial values to screen
-          document.getElementById("title").innerHTML = current.getName();
-          document.getElementById("timer").innerHTML = current.getTime();
-          document.getElementById("control").innerHTML = play_icon;
-          formatSettings();
-        }, 200);
+          setTimeout(function() {
+            updateTimer(name, suffix);
+            updateDisplay();
+          }, 100);
+        }
       }
     });
   }
 
-  return {
-    setup: setup
-  };
-}
-
-var pom = Pomodoro();
-pom.setup();
+  setup();
+})();
