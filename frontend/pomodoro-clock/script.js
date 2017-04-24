@@ -1,6 +1,6 @@
 
-function Timer(seconds) {
-  var time = seconds;
+function Timer(name, seconds, minutes, hours) {
+  var time = seconds + (60 * minutes) + (3600 * hours);
   var remaining = time;
   var running = false;
 
@@ -15,10 +15,12 @@ function Timer(seconds) {
 
       // if no time or timer stopped, CANCEL countdown
       if (!remaining || !running) {
+        cb(getTime(), !remaining); // sends out time, complete status
+        running = false; // stops timer & marks it stopped
         clearInterval(countdown);
       }
       else {
-        // compare current time to start time
+        // update time remaining
         var currTime = new Date();
         remaining = time - Math.floor((currTime - startTime) / 1000);
         if (remaining < 0) {
@@ -26,14 +28,24 @@ function Timer(seconds) {
         }
 
         // call cb and return
-        if (cb) {
-          return cb(remaining);
-        }
+        cb(getTime(), false);
       }
     }, 100);
   }
 
-  function format() {
+  // pause timer
+  function pause() {
+    running = false;
+  }
+
+  // reset timer
+  function reset() {
+    running = false;
+    remaining = time;
+  }
+
+  // get timer remaining: "hh:mm:ss"
+  function getTime() {
     var time = [];
     time[0] = Math.floor(remaining / 3600);
     time[1] = Math.floor(remaining % 3600 / 60);
@@ -47,37 +59,80 @@ function Timer(seconds) {
     return formatted.join(":");
   }
 
+  function isRunning() {
+    return running;
+  }
+
+  function getName() {
+    return name;
+  }
   // return controllers for timer
   return {
-    // start timer (takes callback function)
     start: start,
-
-    // pause timer
-    pause: function() {
-      running = false;
-    },
-
-    // reset timer
-    reset: function() {
-      running = false;
-      remaining = time;
-    },
-
-    // check whether timer is running
-    isRunning: function() {
-      return running;
-    },
-
-    // get seconds remaining
-    getSeconds: function() {
-      return remaining;
-    },
-
-    // function to format time
-    format: format
+    pause: pause,
+    reset: reset,
+    getTime: getTime,
+    isRunning: isRunning,
+    getName: getName
   };
 }
 
-function showTime(time) {
-  document.getElementById('timer').innerHTML = formatTime(time);
+function Pomodoro() {
+  var pomodoro = Timer("Pomodoro", 25, 0, 0);
+  var breaktime = Timer("Breaktime", 5, 0, 0);
+  var current = pomodoro;
+
+  function startTimer() {
+    current.start(handleTimer);
+    document.getElementById("title").innerHTML = current.getName();
+    document.getElementById("control").innerHTML = "PAUSE";
+  }
+
+  function pauseTimer() {
+    current.pause();
+    document.getElementById("control").innerHTML = "START";
+  }
+
+  function handleTimer(time, done) {
+    if (done) {
+      // alert complete and reset current timer
+      console.log(current.getName() + " DONE!!!");
+      current.reset();
+
+      // update current and start
+      current = (current == pomodoro) ? breaktime : pomodoro;
+      startTimer();
+    }
+    else {
+      console.log(time);
+    }
+  }
+
+
+  function setup() {
+    // add event listener for start/pause button
+    document.getElementById("control").addEventListener("click", function() {
+      if (!current.isRunning()) {
+        startTimer();
+      }
+      else {
+        pauseTimer();
+      }
+    });
+
+    document.getElementById("settings").addEventListener("mouseover", function() {
+      document.getElementById("settings-panel").className = "open";
+    });
+
+    document.getElementById("settings").addEventListener("mouseout", function() {
+      document.getElementById("settings-panel").className = "closed";
+    });
+  }
+
+  return {
+    setup: setup
+  };
 }
+
+var pom = Pomodoro();
+pom.setup();
