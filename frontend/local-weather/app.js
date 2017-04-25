@@ -21,7 +21,7 @@ app.listen(port, function() {
 app.get('/', function(req, res) {
 
   // make get request for user's location
-  request("https://freegeoip.net/json/" + '129.72.166.245', function(error, response, body) {
+  request("https://freegeoip.net/json/" + req.ip, function(error, response, body) {
     if (error) {
       console.log(error);
       res.send("Oops! Couldn't get your location!");
