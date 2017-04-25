@@ -71,7 +71,7 @@ Copy this table as needed to make a separate table for each team member for reco
 |      |  [ ]()  | [Build a Wikipedia Viewer](./frontend/wikipedia-viewer) |  |
 |      |  [ ]()  | [Use the Twitch.tv JSON API](./frontend/twitch-client) |  |
 |      |  [ ]()  | [Build a JavaScript Calculator](./frontend/calculator) |  |
-|      |  [ ]()  | [Build a Pomodoro Clock](./frontend/pomodoro-clock) |  |
+| 4/24 |  [Link](https://medium.com/@agathalynn/pomodoro-clock-fcc-speedrun-project-5-8270fb92bae)  | [Build a Pomodoro Clock](./frontend/pomodoro-clock) |  |
 |      |  [ ]()  | [Build a Tic Tac Toe Game](./frontend/tictactoe-game) |  |
 |      |  [ ]()  | [Build a Simon Game](./frontend/simon-game) |  |
 |      |  [ ]()  | [Build a Markdown Previewer](./data-vis/markdown-previewer) |  |
