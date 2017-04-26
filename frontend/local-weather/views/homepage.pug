@@ -1,0 +1,19 @@
+doctype html
+
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title Local Weather
+  body
+    div
+      div
+        h1 The weather in #{loc}
+      div
+        p(id="units") #{temp}
+          span(id="temp-units") &deg;C
+        p
+          img(src=icon_url)
+          span #{desc}
+        p Humidity: #{humidity}%
+        p Wind: #{wind}
+          span(id="speed-units") m/s
