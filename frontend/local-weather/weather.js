@@ -44,10 +44,10 @@ function processWeatherInput(body) {
     return {
         desc: data.weather[0].description || "",
         icon_url: data.weather[0].icon ? "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png" : "",
-        loc: data.weather.name || "",
-        temp: data.main.temp || "",
-        humidity: data.main.humidity || "",
-        wind: data.wind.speed || ""
+        loc: data.name || "your location",
+        temp: Math.round(+data.main.temp),
+        humidity: Math.round(+data.main.humidity),
+        wind: Number(data.wind.speed).toFixed(1)
     };
   }
 }

@@ -4,16 +4,18 @@ html(lang="en")
   head
     meta(charset="utf-8")
     title Local Weather
+
+    link(href="main.css" rel="stylesheet" type="text/css")
   body
-    div
+    div(id="container")
+      div("id=heading")
+        h1 The Weather in <span>#{loc}</span>
       div
-        h1 The weather in #{loc}
-      div
-        p(id="units") #{temp}
-          span(id="temp-units") &deg;C
-        p
-          img(src=icon_url)
-          span #{desc}
-        p Humidity: #{humidity}%
-        p Wind: #{wind}
-          span(id="speed-units") m/s
+        p(id="temp") #{temp}<span id="temp-units">&deg;C</span>
+      div(id="description")
+        img(src=icon_url id="icon")
+        p #{desc}
+      div(id="other")
+        div Humidity: #{humidity}%
+        div Wind: #{wind} m/s
+      script(src="script.js")
