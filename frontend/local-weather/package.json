@@ -1,0 +1,17 @@
+{
+  "name": "local-weather",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp Local Weather Project created as part of chingu fcc speedrun challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abigail (agathalynn)",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "pug": "^2.0.0-beta.12",
+    "request": "^2.81.0"
+  }
+}

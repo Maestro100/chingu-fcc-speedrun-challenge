@@ -1,0 +1,21 @@
+doctype html
+
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title Local Weather
+
+    link(href="main.css" rel="stylesheet" type="text/css")
+  body
+    div(id="container")
+      div("id=heading")
+        h1 The Weather in <span>#{loc}</span>
+      div
+        p(id="temp") #{temp}<span id="temp-units">&deg;C</span>
+      div(id="description")
+        img(src=icon_url id="icon")
+        p #{desc}
+      div(id="other")
+        div Humidity: #{humidity}%
+        div Wind: #{wind} m/s
+      script(src="script.js")
