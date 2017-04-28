@@ -3,19 +3,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wikipedia Viewer - FCC Speedrun Project</title>
     <link href="main.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
-    <form>
-      <input type="text" id="search-field" placeholder="Find articles about...">
-      <div class="buttons">
-        <button id="rand-btn">Random</button>
-        <button id='search-btn'>Search</button>
-      </div>
-    </form>
+    <div id="search-form">
+      <input type="text" id="search-field" value="" placeholder="Search Wikipedia for...">
+      <input type="button" id="rand-btn" value="Random Article">
+    </div>
 
     <div id="search-results">
+      <!--
+      <div class="response">
+        <a href="url">
+          <h2>{{Title}}</h2>
+          <p>{{Snippet}}</p>
+        </a>
+      </div>
+      -->
     </div>
     <script src="script.js" type="text/javascript"></script>
   </body>

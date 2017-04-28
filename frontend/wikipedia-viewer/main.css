@@ -1,0 +1,74 @@
+/*
+FONT STYLES
+*/
+a, p, h2, input {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*
+PAGE ELEMENTS
+*/
+
+body {
+  background-color: #2e5698;
+}
+
+/*
+FORM ELEMENTS
+*/
+
+input {
+  display: block;
+  box-sizing: border-box;
+  margin: 20px auto;
+  padding: 10px;
+  width: 350px;
+  max-width: 80%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#rand-btn {
+  box-shadow: 1px 1px 3px 1px #4d90fe;
+}
+
+#rand-btn:hover,
+#rand-btn:focus {
+  box-shadow: none;
+}
+
+#search-field {
+  box-shadow: inset 0px 0px 3px 1px #4d90fe;
+}
+
+/*
+SEARCH RESULTS
+*/
+
+#search-results {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-top: 1px solid #4d90fe;
+}
+
+.response {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.response:hover,
+.response:focus {
+  border: 1px solid white;
+}
