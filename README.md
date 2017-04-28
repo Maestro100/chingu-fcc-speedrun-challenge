@@ -68,7 +68,7 @@ Copy this table as needed to make a separate table for each team member for reco
 |      |  [ ]()  | [Build a Personal Portfolio Webpage](./frontend/portfolio) |  |
 | 4/21 |  [Link](https://medium.com/@agathalynn/quote-machine-fcc-speedrun-project-2-483ab4b13d0f)  | [Build a Random Quote Machine](./frontend/random-quote-machine) |  |
 | 4/27 |  [Link](https://medium.com/@agathalynn/local-weather-app-fcc-speedrun-project-6-1031642fa63f)  | [Show the Local Weather](./frontend/local-weather) |  |
-|      |  [ ]()  | [Build a Wikipedia Viewer](./frontend/wikipedia-viewer) |  |
+| 4/28 |  [Link](https://medium.com/@agathalynn/wikipedia-viewer-fcc-speedrun-project-7-12b4f8824a77)  | [Build a Wikipedia Viewer](./frontend/wikipedia-viewer) |  |
 |      |  [ ]()  | [Use the Twitch.tv JSON API](./frontend/twitch-client) |  |
 |      |  [ ]()  | [Build a JavaScript Calculator](./frontend/calculator) |  |
 | 4/24 |  [Link](https://medium.com/@agathalynn/pomodoro-clock-fcc-speedrun-project-5-8270fb92bae)  | [Build a Pomodoro Clock](./frontend/pomodoro-clock) |  |
