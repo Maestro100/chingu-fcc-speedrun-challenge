@@ -1,4 +1,4 @@
-
+// identify HTML elements I'll need
 var search_field = document.getElementById('search-field');
 var rand_btn = document.getElementById('rand-btn');
 var search_results = document.getElementById('search-results');
@@ -54,7 +54,7 @@ search_field.addEventListener("keyup", function() {
   }
 });
 
-// set up random button
+// set up "random article" button
 rand_btn.addEventListener("click", function() {
   window.open("https://en.wikipedia.org/wiki/Special:Random");
 });
