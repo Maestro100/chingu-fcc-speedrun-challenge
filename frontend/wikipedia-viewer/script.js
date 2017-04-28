@@ -10,7 +10,7 @@ function search(input, success) {
   var req = new XMLHttpRequest();
 
   req.open("GET", url);
-  req.setRequestHeader('Api-User-Agent', 'Example/1.0');
+  //req.setRequestHeader('Api-User-Agent', 'Example/1.0');
   req.onload = function() {
     if (req.status === 200) {
       var response = JSON.parse(req.response);
