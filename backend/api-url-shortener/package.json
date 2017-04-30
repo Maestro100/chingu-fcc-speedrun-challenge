@@ -1,0 +1,15 @@
+{
+  "name": "api-url-shortener",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp's url shortener api project, made as part of chingu speedrun challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abigail (agathalynn)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26"
+  }
+}
