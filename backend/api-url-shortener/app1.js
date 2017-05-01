@@ -41,7 +41,7 @@ mongoClient.connect(db_url)
 
 // handle GET requests to '/'
 app.get('/', function(req, res) {
-  res.send("Instructions page");
+  res.sendFile(__dirname + "/index.html");
 });
 
 // handle GET requests for new url
