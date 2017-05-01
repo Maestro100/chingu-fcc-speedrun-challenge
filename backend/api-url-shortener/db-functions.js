@@ -1,48 +1,76 @@
-var assert = require('assert');
 
-var findShortForm = function(url, db, callback) {
-  var collection = db.collection('url-redirects');
-
-  collection.findOne({'original_url': url}, function(err, result) {
-    assert.equal(err, null);
-    if (result) {
-      console.log("Found the following record");
-      console.log(result);
-    }
-    else {
-      console.log("No result found");
-    }
-    callback(result);
-  });
+// searches redirects for short-form url
+var findShortForm = function(url, db) {
+  var redirects = db.collection('url-redirects');
+  return redirects.findOne({original_url: url});
 };
 
-var addShortForm = function(original_url, short_url, db, callback) {
-  var collection = db.collection('url-redirects');
-
-  collection.insertOne({'original_url': original_url, 'short_url': short_url}, function(err, result) {
-    assert.equal(err, null);
-    assert.equal(result.result.n, 1);
-    console.log("new short form added");
-    callback(result);
-  });
+// searches redirects for original url
+var findOriginal = function(num, db) {
+  var redirects = db.collection('url-redirects');
+  return redirects.findOne({short_url: num});
 };
 
-var findOriginal = function(short, db, callback) {
-  var collection = db.collection('url-redirects');
+// adds new entry to redirects
+var newEntry = function(original_url, db) {
+  var redirects = db.collection('url-redirects');
 
-  collection.findOne({"short_url": short}, function(err, result) {
-    assert.equal(err, null);
-    if (result) {
-      console.log("Found the following record");
-      console.log(result);
+  // get value of new short url
+  return getNextShort(db)
+  .then(
+    function fulfilled(val) {
+      console.log("value it insert: " + val);
+      var insertion = redirects.insertOne({
+        'original_url': original_url,
+        'short_url': val
+      });
+      return Promise.all([val, insertion]);
     }
-    else {
-      console.log("No result found");
+  )
+  .then(
+    function fulfilled(data) {
+      return data[0];
+    },
+    function rejected(reason) {
+      console.log("data insertion rejected: " + reason);
+      return reason;
     }
-    callback(result);
-  });
+  );
 };
 
+var getNextShort = function(db) {
+  var counters = db.collection('counters');
+  return counters.findAndModify(
+    {_id: 'short_url'}, // query
+    [], // sort
+    { $inc: { seq: 1} }, // update
+    {new: true} // return updated ("new") version
+  )
+  .then(
+    function fulfilled(data) {
+      return data.value.seq;
+    }
+  );
+};
+
+// functions for clearing and resetting database
+var clear = function(db) {
+  var counters_clear = db.collection("counters").remove({});
+  var redirects_clear = db.collection("url-redirects").remove({});
+  return Promise.all([db, counters_clear, redirects_clear]);
+};
+
+var setup = function(db) {
+  var insertion = db.collection("counters").insert({
+      _id: "short_url",
+      seq: 0
+    });
+  return Promise.all([db, insertion]);
+};
+
+// export stuff
 module.exports.findOriginal = findOriginal;
-module.exports.addShortForm = addShortForm;
+module.exports.newEntry = newEntry;
 module.exports.findShortForm = findShortForm;
+module.exports.setup = setup;
+module.exports.clear = clear;
