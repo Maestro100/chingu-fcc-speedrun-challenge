@@ -2,7 +2,6 @@
 // require modules
 var re_url = require('./regex-weburl.js');
 var redirects = require('./db-functions.js');
-var url = require('url');
 
 // ...express app
 var express = require('express');
@@ -68,9 +67,10 @@ app.get('/new/*', function(req, res) {
       // return the short form to user
       .then(
         function fulfilled(result) {
+          var new_url = req.protocol + '://' + req.get('host') + '/' + result;
           res.json({
             "original_url": url,
-            "short_url": result
+            "short_url": new_url
           });
           db.close();
         },
