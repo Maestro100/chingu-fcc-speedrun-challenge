@@ -15,10 +15,5 @@ Build a full stack app that is functionally similar to this: https://little-url.
 ## Notes
 
 To-do:
-
-* Clean invalid mess-ups out of database (eventually)
-* Get rid of "ticker" variable (separate collection?) - this link may be helpful: (https://docs.mongodb.com/v3.0/tutorial/create-an-auto-incrementing-field/)
-* Clean up spaghetti code (promises?)
 * Get instructions page set up
 * Do write-up
-* Error handling?

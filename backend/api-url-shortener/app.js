@@ -2,11 +2,10 @@
 var ticker = 0;
 
 // require modules
-var assert = require('assert');
 var path = require('path');
 
 var re_url = require('./regex-weburl.js');
-var redirects = require('./db-functions.js');
+var redirects = require('./db-functions-promise.js');
 
 // ...express app
 var express = require('express');
@@ -15,6 +14,16 @@ var app = express();
 // ...database
 var mongoClient = require('mongodb').MongoClient;
 var db_url = 'mongodb://localhost:27017/api_url_shortener';
+
+// make sure that database is set up correctly
+mongoClient.connect(db_url, function(err, db) {
+  if (err) {
+    console.log(err);
+  }
+  else {
+    redirects.setup(db);
+  }
+});
 
 // handle GET requests to '/'
 app.get('/', function(req, res) {
@@ -32,7 +41,7 @@ app.get('/new/*', function(req, res) {
   if (re_url.validate(url)) {
 
     // assign new url
-    data.original_url = url;
+    data.original_url = original_url;
 
     // connect to database server
     mongoClient.connect(db_url, function(err, db) {
@@ -40,7 +49,7 @@ app.get('/new/*', function(req, res) {
       console.log("Connected successfully to server");
 
       // check whether redirect already exists
-      redirects.findShortForm(url, db, function(result) {
+      redirects.findShortForm(original_url, db, function(result) {
         if (result) {
           data.short_url = result.short_url;
           db.close();
@@ -51,7 +60,7 @@ app.get('/new/*', function(req, res) {
           var short = "/" + ticker.toString();
           ticker++;
 
-          redirects.addShortForm(url, short, db, function() {
+          redirects.addShortForm(original_url, short, db, function() {
             data.short_url = short;
             db.close();
             // send data
