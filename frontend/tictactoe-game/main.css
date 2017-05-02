@@ -1,0 +1,21 @@
+div {
+  box-sizing: border-box;
+}
+
+#tic-tac-toe {
+  width: 330px;
+  height: 330px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: violet;
+}
+
+#tic-tac-toe .square {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+  padding: 0;
+  background-color: white;
+}
