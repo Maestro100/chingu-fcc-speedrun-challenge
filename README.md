@@ -86,7 +86,7 @@ Copy this table as needed to make a separate table for each team member for reco
 |      |  [ ]()  | [Map Data Across the Globe](./data-vis/data-across-globe) |  |
 | 4/21 |  [Link](https://medium.com/@agathalynn/timestamp-microservice-fcc-speedrun-project-3-69c35596a9be)  | [Timestamp Microservice](./backend/api-timestamp) |  |
 | 4/22 |  [Link](https://medium.com/@agathalynn/header-parser-fcc-speedrun-project-4-db0aeb74bea6)  | [Request Header Parser Microservice](./backend/api-request-header) |  |
-|      |  [ ]()  | [URL Shortener Microservice](./backend/api-url-shortener) |  |
+| 5/2  |  [Link](https://medium.com/@agathalynn/url-shortener-microservice-fcc-speedrun-project-8-d1ebfcd8e2f5)  | [URL Shortener Microservice](./backend/api-url-shortener) |  |
 |      |  [ ]()  | [Image Search Abstraction Layer](./backend/api-image-search) |  |
 |      |  [ ]()  | [File Metadata Microservice](./backend/api-file-metadata) |  |
 |      |  [ ]()  | [Build a Voting App](./backend/app-voting) |  |

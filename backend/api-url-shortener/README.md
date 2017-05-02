@@ -13,7 +13,3 @@ Build a full stack app that is functionally similar to this: https://little-url.
 * User Story: When I visit that shortened URL, it will redirect me to my original link.
 
 ## Notes
-
-To-do:
-* Get instructions page set up
-* Do write-up
