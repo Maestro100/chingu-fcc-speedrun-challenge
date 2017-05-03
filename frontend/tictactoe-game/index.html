@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <title>Tic-Tac-Toe</title>
   <link href="main.css" rel="stylesheet">
 </head>
 <body>
 
-  <div id="message">
+  <div id="modal" class="display">
+    <div class="content">
+      <div id="message">
+        Let's play Tic-Tac-Toe!
+      </div>
+      <div>Pick 'X' or 'O' to start a new game:</div>
+      <div id="controls">
+        <div id="play-x" class="btn">X</div>
+        <div id="play-o" class="btn">O</div>
+      </div>
+    </div>
   </div>
 
   <div id="tic-tac-toe">
-    <div class="square" id="8"></div><!--
-    --><div class="square" id="1"></div><!--
-    --><div class="square" id="6"></div><!--
-    --><div class="square" id="3"></div><!--
+    <div class="square top left" id="8"></div><!--
+    --><div class="square top" id="1"></div><!--
+    --><div class="square top right" id="6"></div><!--
+    --><div class="square left" id="3"></div><!--
     --><div class="square" id="5"></div><!--
-    --><div class="square" id="7"></div><!--
-    --><div class="square" id="4"></div><!--
-    --><div class="square" id="9"></div><!--
-    --><div class="square" id="2"></div>
-  </div>
-
-  <div>
-    <button id="play-x">Play as X</button>
-    <button id="play-o">Play as O</button>
+    --><div class="square right" id="7"></div><!--
+    --><div class="square bottom left" id="4"></div><!--
+    --><div class="square bottom" id="9"></div><!--
+    --><div class="square bottom right" id="2"></div>
   </div>
 
   <script src="game.js"></script>

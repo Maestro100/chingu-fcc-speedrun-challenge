@@ -42,6 +42,7 @@ var Game = function() {
   };
 
   // right now returns a decent move, but not the best!
+  // based on strategy outlined in "tic-tac-toe" wikipedia article
   this.getBestMove = function(player) {
     // get player
     var curr = (player === 'x') ? x : o;
@@ -53,7 +54,7 @@ var Game = function() {
     }
 
     // If opponent can win, return move to block them
-    var opponent = (player === x) ? o : x;
+    var opponent = (player === 'x') ? o : x;
     move = canWin(opponent, open);
     if (move.win) {
       return move.square;
@@ -67,7 +68,7 @@ var Game = function() {
     }
 
     // if opponent in corner, return (open) opposite corner
-    var evens = open.filter(x => x % 2 === 0);
+    var evens = open.filter(function(x) {return x % 2 === 0;});
     for (var i = 0; i < evens.length; i++) {
       if (evens.indexOf(10 - evens[i]) > -1) {
         return 10 - evens[i];
@@ -91,7 +92,7 @@ var Game = function() {
     state.x = x.slice(0);
     state.o = o.slice(0);
 
-    // check for available moves
+    // check for game over / winner
     if (hasWon(x)) {
       state.over = true;
       state.winner = 'x';
@@ -108,7 +109,7 @@ var Game = function() {
       state.over = false;
     }
 
-    // if game not over, return who goes next
+    // if game not over, add who goes next
     if (!state.over) {
       state.next = (x.length > o.length ? 'o' : 'x');
     }
@@ -119,6 +120,7 @@ var Game = function() {
   /*
   HELPER FUNCTIONS
   */
+  // check for three-in-a-row
   function hasWon(player_squares) {
     for (var i = 0; i < player_squares.length; i++) {
       for (var j = i + 1; j < player_squares.length; j++) {
@@ -146,13 +148,13 @@ var Game = function() {
     return { win: false };
 
     // given current game state, returns values that would win game
+    // these values need not be available moves, or even squares on the board
     function getWinningMoves(arr) {
       var moves = [];
 
       // iterate through each "pair" in array
       for (var i = 0; i < arr.length; i++) {
         for (j = i + 1; j < arr.length; j++) {
-
           // add new values to array
           var value = 15 - (arr[i] + arr[j]);
           if (moves.indexOf(value) < 0) {
