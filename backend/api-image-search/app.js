@@ -2,6 +2,7 @@
 var express = require('express');
 var request = require('request');
 var mongoClient = require('mongodb').MongoClient;
+var dbURL = 'mongodb://localhost:27017/image_search';
 
 // grab environmental variables
 require('dotenv').config();
@@ -12,7 +13,53 @@ var engineID = process.env.ENGINE_ID;
 // get app up and running
 var app = express();
 app.listen(3000, function() {
-  console.log("App is listening.");
+  mongoClient.connect(dbURL)
+  .then(
+    function fulfilled(db) {
+      return Promise.all([db, db.collection('latest').remove({})]);
+    }
+  )
+  .then(
+    function fulfilled([db, result]) {
+      return Promise.all([db, db.collection('latest').insert({
+        latest: []
+      })]);
+    }
+  )
+  .then(
+    function fulfilled() {
+      console.log("App is listening.");
+    },
+    function rejected(reason) {
+      console.log(reason);
+    }
+  );
+});
+
+// handle GET requests for history
+app.get('/latest', function(req, res) {
+  mongoClient.connect(dbURL)
+  .then(
+    function fulfilled(db) {
+      var collection = db.collection('latest');
+      return Promise.all([collection.findOne(), db]);
+    }
+  )
+  .then(
+    function fulfilled([doc, db]) {
+      res.json(doc.latest);
+      db.close();
+    }
+  )
+  .then(
+    function fulfilled() {
+      console.log('success');
+    },
+    function rejected(reason) {
+      console.log("rejected: " + reason);
+      res.json({"error": "request failed"});
+    }
+  );
 });
 
 // handle GET requests to homepage
@@ -24,17 +71,32 @@ app.get('/*', function(req, res) {
     res.json({'error': 'no search parameter found'});
   }
   else {
-    getSearchResults(getParams(req.url))
+    //getSearchResults(params)
+    Promise.resolve('hello')
+    .then(
+      function fulfilled() {
+      return getFakeSearchResults(getParams(req.url));
+      }
+    )
     .then(
       function fulfilled(results) {
-        console.log(results);
-        results = formatSearchResults(results);
-        console.log(results);
-        res.json(results);
+        //results = formatSearchResults(results);
+        return results;
+      }
+    )
+    .then(
+      function fulfilled(results) {
+        return Promise.all([results, updateLatest(params.search, dbURL)]);
+      }
+    )
+    .then(
+      function fulfilled(arr) {
+        res.json(arr[0]);
+        console.log("success: database updated");
       },
       function rejected(reason) {
-        console.log(reason);
-        res.json({'error': reason});
+        console.log('err ' + reason);
+        res.json({"error": reason});
       }
     );
   }
@@ -51,6 +113,10 @@ app.get('/*', function(req, res) {
     });
   }
 
+  function getFakeSearchResults(params) {
+    return {items:[{"url":"http://content.13newsnow.com/photo/2016/04/21/-1x-1_1461249886262_1819968_ver1.0.jpg","snippet":"Pumpkin Spice Cheerios in the works | MYFOXZONE.COM","thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxMWPTDZS4kUcAYbvL8wmweLOQTRPOnpnpWsoyduaLRADHBKLdOU_KegY","context":"http://www.myfoxzone.com/life/pumpkin-spice-cheerios-in-the-works/288442089"},{"url":"https://media1.popsugar-assets.com/files/thumbor/7qJUgAcYBspN-5vW02LLoBnvfIA/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/01/12/830/n/1922195/56dee7de244532e0_cheerios5.jpg","snippet":"Very Berry Cheerios Review | POPSUGAR Food","thumbnail":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQGSn3ZLWaLMSZYSWMRbjzemJCdk81LYC99DGOa3-e4_GYGLpL_SjiUctk","context":"https://www.popsugar.com/food/Very-Berry-Cheerios-Review-42990596"}]};
+  }
+  /*
   function getSearchResults(params) {
     var url = 'https://www.googleapis.com/customsearch/v1?';
     return new Promise(function(resolve, reject) {
@@ -79,7 +145,7 @@ app.get('/*', function(req, res) {
         }
       );
     });
-  }
+  } */
 
   function getParams(url) {
     var params = {};
@@ -91,4 +157,45 @@ app.get('/*', function(req, res) {
     });
     return params;
   }
+
+  function updateLatest(search, dbURL) {
+    mongoClient.connect(dbURL)
+    .then(
+      function fulfilled(db) {
+        var collection = db.collection('latest');
+        return Promise.all([collection.findOne(), db]);
+      }
+    )
+    .then(
+      function fulfilled([doc, db]) {
+        console.log("doc.latest.length: " + doc.latest.length);
+        doc = doc || {latest: []};
+
+        if (doc.latest.length == 10) {
+          doc.latest.pop();
+        }
+        doc.latest.unshift({
+          search: search,
+          time: new Date().toISOString()
+        });
+        return [doc, db];
+      }
+    )
+    .then(
+      function fulfilled([doc, db]) {
+        var collection = db.collection('latest');
+        return [collection.updateOne({}, { $set:{"latest":doc.latest} }), db];
+      }
+    )
+    .then(
+      function fulfilled([update, db]) {
+        db.close();
+      },
+      function rejected(reason) {
+        console.log(reason);
+        return reason;
+      }
+    );
+  }
+
 });
