@@ -76,8 +76,7 @@ app.get('/*', function(req, res) {
     getSearchResults(params)
     .then(
       function fulfilled(results) {
-        results = formatSearchResults(results);
-        return results;
+        return formatSearchResults(results);
       }
     )
     .then(
@@ -134,7 +133,7 @@ app.get('/*', function(req, res) {
           }
           else if (response && response.statusCode !=200){
             console.log(body);
-            reject('unsuccessful search');
+            reject('unsuccessful search; status code: ' + response.statusCode);
           }
           else {
             resolve(body);
@@ -155,6 +154,7 @@ app.get('/*', function(req, res) {
     return params;
   }
 
+  // I'm pretty sure there's a way to simplify this
   function updateLatest(search, dbURL) {
     mongoClient.connect(dbURL)
     .then(
