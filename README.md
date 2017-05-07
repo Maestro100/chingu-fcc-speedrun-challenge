@@ -72,7 +72,7 @@ Copy this table as needed to make a separate table for each team member for reco
 | 5/5  |  [Link](https://medium.com/chingu-fcc-speedrun/twitch-tv-client-fcc-speedrun-project-10-334017c4d693)  | [Use the Twitch.tv JSON API](./frontend/twitch-client) |  |
 |      |  [ ]()  | [Build a JavaScript Calculator](./frontend/calculator) |  |
 | 4/24 |  [Link](https://medium.com/@agathalynn/pomodoro-clock-fcc-speedrun-project-5-8270fb92bae)  | [Build a Pomodoro Clock](./frontend/pomodoro-clock) |  |
-|      |  [ ]()  | [Build a Tic Tac Toe Game](./frontend/tictactoe-game) |  |
+| 5/3  |  [Link](https://medium.com/chingu-fcc-speedrun/tic-tac-toe-game-fcc-speedrun-project-9-2027421612dc)  | [Build a Tic Tac Toe Game](./frontend/tictactoe-game) |  |
 |      |  [ ]()  | [Build a Simon Game](./frontend/simon-game) |  |
 |      |  [ ]()  | [Build a Markdown Previewer](./data-vis/markdown-previewer) |  |
 |      |  [ ]()  | [Build a Camper Leaderboard](./data-vis/camper-leaderboard) |  |
