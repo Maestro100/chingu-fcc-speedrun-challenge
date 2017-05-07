@@ -69,7 +69,7 @@ Copy this table as needed to make a separate table for each team member for reco
 | 4/21 |  [Link](https://medium.com/@agathalynn/quote-machine-fcc-speedrun-project-2-483ab4b13d0f)  | [Build a Random Quote Machine](./frontend/random-quote-machine) |  |
 | 4/27 |  [Link](https://medium.com/@agathalynn/local-weather-app-fcc-speedrun-project-6-1031642fa63f)  | [Show the Local Weather](./frontend/local-weather) |  |
 | 4/28 |  [Link](https://medium.com/@agathalynn/wikipedia-viewer-fcc-speedrun-project-7-12b4f8824a77)  | [Build a Wikipedia Viewer](./frontend/wikipedia-viewer) |  |
-|      |  [ ]()  | [Use the Twitch.tv JSON API](./frontend/twitch-client) |  |
+| 5/5  |  [Link](https://medium.com/chingu-fcc-speedrun/twitch-tv-client-fcc-speedrun-project-10-334017c4d693)  | [Use the Twitch.tv JSON API](./frontend/twitch-client) |  |
 |      |  [ ]()  | [Build a JavaScript Calculator](./frontend/calculator) |  |
 | 4/24 |  [Link](https://medium.com/@agathalynn/pomodoro-clock-fcc-speedrun-project-5-8270fb92bae)  | [Build a Pomodoro Clock](./frontend/pomodoro-clock) |  |
 |      |  [ ]()  | [Build a Tic Tac Toe Game](./frontend/tictactoe-game) |  |
@@ -87,7 +87,7 @@ Copy this table as needed to make a separate table for each team member for reco
 | 4/21 |  [Link](https://medium.com/@agathalynn/timestamp-microservice-fcc-speedrun-project-3-69c35596a9be)  | [Timestamp Microservice](./backend/api-timestamp) |  |
 | 4/22 |  [Link](https://medium.com/@agathalynn/header-parser-fcc-speedrun-project-4-db0aeb74bea6)  | [Request Header Parser Microservice](./backend/api-request-header) |  |
 | 5/2  |  [Link](https://medium.com/@agathalynn/url-shortener-microservice-fcc-speedrun-project-8-d1ebfcd8e2f5)  | [URL Shortener Microservice](./backend/api-url-shortener) |  |
-|      |  [ ]()  | [Image Search Abstraction Layer](./backend/api-image-search) |  |
+| 5/7  |  [Link](https://medium.com/@agathalynn/image-search-abstraction-layer-fcc-speedrun-project-11-201c1e0bc2f4)  | [Image Search Abstraction Layer](./backend/api-image-search) |  |
 |      |  [ ]()  | [File Metadata Microservice](./backend/api-file-metadata) |  |
 |      |  [ ]()  | [Build a Voting App](./backend/app-voting) |  |
 |      |  [ ]()  | [Build a Nightlife Coordination App](./backend/app-nightlife) |  |
