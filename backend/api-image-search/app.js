@@ -39,6 +39,12 @@ app.listen(3000, function() {
   );
 });
 
+// handle GET request for favicon
+app.get('/favicon.ico', function(req, res) {
+  console.log(req.url);
+  res.sendFile(__dirname + '/' + 'favicon.ico');
+});
+
 // handle GET requests for history
 app.get('/latest', function(req, res) {
   mongoClient.connect(dbURL)
@@ -67,6 +73,7 @@ app.get('/latest', function(req, res) {
 
 // handle GET requests to homepage
 app.get('/*', function(req, res) {
+  console.log(req.url);
   var params = getParams(req.url);
   if (!params.search) {
     console.log('no search query provided');
@@ -169,7 +176,7 @@ app.get('/*', function(req, res) {
           doc.latest.pop();
         }
         doc.latest.unshift({
-          search: search,
+          search: decodeURIComponent(search),
           time: new Date().toISOString()
         });
         return [doc, db];
