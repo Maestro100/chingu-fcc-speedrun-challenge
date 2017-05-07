@@ -13,6 +13,8 @@ var engineID = process.env.ENGINE_ID;
 // get app up and running
 var app = express();
 app.listen(3000, function() {
+
+  // reset database - how do I not have to do this?
   mongoClient.connect(dbURL)
   .then(
     function fulfilled(db) {
@@ -27,8 +29,9 @@ app.listen(3000, function() {
     }
   )
   .then(
-    function fulfilled() {
+    function fulfilled([db, result]) {
       console.log("App is listening.");
+      db.close();
     },
     function rejected(reason) {
       console.log(reason);
@@ -65,22 +68,15 @@ app.get('/latest', function(req, res) {
 // handle GET requests to homepage
 app.get('/*', function(req, res) {
   var params = getParams(req.url);
-  console.log(params);
   if (!params.search) {
     console.log('no search query provided');
     res.json({'error': 'no search parameter found'});
   }
   else {
-    //getSearchResults(params)
-    Promise.resolve('hello')
-    .then(
-      function fulfilled() {
-      return getFakeSearchResults(getParams(req.url));
-      }
-    )
+    getSearchResults(params)
     .then(
       function fulfilled(results) {
-        //results = formatSearchResults(results);
+        results = formatSearchResults(results);
         return results;
       }
     )
@@ -112,11 +108,12 @@ app.get('/*', function(req, res) {
       };
     });
   }
+  /* Used for testing - so I'm not making as many api calls
 
   function getFakeSearchResults(params) {
     return {items:[{"url":"http://content.13newsnow.com/photo/2016/04/21/-1x-1_1461249886262_1819968_ver1.0.jpg","snippet":"Pumpkin Spice Cheerios in the works | MYFOXZONE.COM","thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxMWPTDZS4kUcAYbvL8wmweLOQTRPOnpnpWsoyduaLRADHBKLdOU_KegY","context":"http://www.myfoxzone.com/life/pumpkin-spice-cheerios-in-the-works/288442089"},{"url":"https://media1.popsugar-assets.com/files/thumbor/7qJUgAcYBspN-5vW02LLoBnvfIA/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/01/12/830/n/1922195/56dee7de244532e0_cheerios5.jpg","snippet":"Very Berry Cheerios Review | POPSUGAR Food","thumbnail":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQGSn3ZLWaLMSZYSWMRbjzemJCdk81LYC99DGOa3-e4_GYGLpL_SjiUctk","context":"https://www.popsugar.com/food/Very-Berry-Cheerios-Review-42990596"}]};
   }
-  /*
+  */
   function getSearchResults(params) {
     var url = 'https://www.googleapis.com/customsearch/v1?';
     return new Promise(function(resolve, reject) {
@@ -145,7 +142,7 @@ app.get('/*', function(req, res) {
         }
       );
     });
-  } */
+  }
 
   function getParams(url) {
     var params = {};
@@ -168,9 +165,6 @@ app.get('/*', function(req, res) {
     )
     .then(
       function fulfilled([doc, db]) {
-        console.log("doc.latest.length: " + doc.latest.length);
-        doc = doc || {latest: []};
-
         if (doc.latest.length == 10) {
           doc.latest.pop();
         }
@@ -184,7 +178,7 @@ app.get('/*', function(req, res) {
     .then(
       function fulfilled([doc, db]) {
         var collection = db.collection('latest');
-        return [collection.updateOne({}, { $set:{"latest":doc.latest} }), db];
+        return [collection.updateOne({}, { $set:{latest:doc.latest} }), db];
       }
     )
     .then(
@@ -197,5 +191,4 @@ app.get('/*', function(req, res) {
       }
     );
   }
-
 });
