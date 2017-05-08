@@ -88,7 +88,7 @@ Copy this table as needed to make a separate table for each team member for reco
 | 4/22 |  [Link](https://medium.com/@agathalynn/header-parser-fcc-speedrun-project-4-db0aeb74bea6)  | [Request Header Parser Microservice](./backend/api-request-header) |  |
 | 5/2  |  [Link](https://medium.com/@agathalynn/url-shortener-microservice-fcc-speedrun-project-8-d1ebfcd8e2f5)  | [URL Shortener Microservice](./backend/api-url-shortener) |  |
 | 5/7  |  [Link](https://medium.com/@agathalynn/image-search-abstraction-layer-fcc-speedrun-project-11-201c1e0bc2f4)  | [Image Search Abstraction Layer](./backend/api-image-search) |  |
-|      |  [ ]()  | [File Metadata Microservice](./backend/api-file-metadata) |  |
+| 5/8  |  [Link](https://medium.com/@agathalynn/file-metadata-microservice-fcc-speedrun-project-12-5abae5a1c208)  | [File Metadata Microservice](./backend/api-file-metadata) |  |
 |      |  [ ]()  | [Build a Voting App](./backend/app-voting) |  |
 |      |  [ ]()  | [Build a Nightlife Coordination App](./backend/app-nightlife) |  |
 |      |  [ ]()  | [Chart the Stock Market](./backend/app-stock-market) |  |
