@@ -1,0 +1,15 @@
+{
+  "name": "api-file-metadata",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp file metadata microservice API project (created as part of chingu fcc speedrun challenge)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abigail (agathalynn)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "multer": "^1.3.0"
+  }
+}
